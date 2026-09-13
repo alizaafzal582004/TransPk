@@ -24,7 +24,7 @@ export default function App() {
       >
         <Stack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'SafarZuban' }} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'TransPk' }} />
         <Stack.Screen name="Conversation" component={ConversationScreen} options={{ title: 'Conversation' }} />
         <Stack.Screen name="TextTranslation" component={TextTranslationScreen} options={{ title: 'Text Translation' }} />
         <Stack.Screen name="Phrasebook" component={PhrasebookScreen} options={{ title: 'Phrasebook' }} />

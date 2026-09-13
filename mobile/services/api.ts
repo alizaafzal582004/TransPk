@@ -1,5 +1,5 @@
 // SafarZuban — Backend API Service
-const BACKEND_URL = 'http://192.168.100.22:8000';
+const BACKEND_URL = 'https://safarzubaan.onrender.com';
 
 // TEXT TRANSLATION
 export async function translateText(

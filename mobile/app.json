@@ -1,27 +1,26 @@
 {
   "expo": {
-    "name": "SafarZuban",
-    "slug": "safarzuban",
+    "name": "TransPk",
+    "slug": "transpk",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "backgroundColor": "#eef0fb"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSMicrophoneUsageDescription": "SafarZuban needs microphone access for voice translation."
+        "NSMicrophoneUsageDescription": "TransPk needs microphone access for voice translation."
       }
     },
     "android": {
-      "package": "com.safarzuban.mvp",
+      "package": "com.transpk.app",
+      "versionCode": 1,
       "icon": "./assets/icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
@@ -30,11 +29,6 @@
       "permissions": [
         "RECORD_AUDIO"
       ]
-    },
-    "extra": {
-      "eas": {
-        "projectId": "551eed26-c7eb-4846-bb6f-bfc41c78708a"
-      }
     }
   }
 }

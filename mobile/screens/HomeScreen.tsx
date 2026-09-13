@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }: any) {
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
         <View style={styles.header}>
           <Text style={styles.brand}>
-            Safar<Text style={styles.brandAccent}>Zuban</Text>
+            Trans<Text style={styles.brandAccent}>Pk</Text>
           </Text>
           <View style={styles.brandLine} />
           <Text style={styles.tagline}>Multilingual Pakistan Translator</Text>
