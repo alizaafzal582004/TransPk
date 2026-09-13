@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "SafarZuban",
+    "slug": "safarzuban",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#eef0fb"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "SafarZuban needs microphone access for voice translation."
+      }
+    },
+    "android": {
+      "package": "com.safarzuban.mvp",
+      "icon": "./assets/icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#eef0fb"
+      },
+      "permissions": [
+        "RECORD_AUDIO"
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "551eed26-c7eb-4846-bb6f-bfc41c78708a"
+      }
+    }
+  }
+}
