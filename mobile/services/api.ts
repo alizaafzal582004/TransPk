@@ -1,4 +1,4 @@
-// SafarZuban — Backend API Service
+// TransPk — Backend API Service
 const BACKEND_URL = 'https://safarzubaan.onrender.com';
 
 // TEXT TRANSLATION

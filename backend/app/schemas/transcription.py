@@ -1,4 +1,4 @@
-# SafarZuban — Transcription Schema
+# TransPk — Transcription Schema
 from pydantic import BaseModel
 from typing import Optional
 

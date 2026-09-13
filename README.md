@@ -1,10 +1,10 @@
-# SafarZuban — Multilingual Pakistan Translator
+# TransPk — Multilingual Pakistan Translator
 
 A mobile app that lets foreign tourists in Pakistan communicate with locals by translating between foreign languages and Pakistani regional languages — in text, voice, or a mix of both.
 
 ## Overview
 
-SafarZuban helps two people who don't share a language communicate. A tourist speaks or types in their language, the app translates to a Pakistani language, and the local person can read or hear it — then reply back. The phone can be passed between both people using Conversation Mode.
+TransPk helps two people who don't share a language communicate. A tourist speaks or types in their language, the app translates to a Pakistani language, and the local person can read or hear it — then reply back. The phone can be passed between both people using Conversation Mode.
 
 ## Features
 
@@ -108,7 +108,7 @@ safaruzuban-mvp/
    ```
    npx expo start --dev-client
    ```
-5. Open the SafarZuban development build on your Android device and connect.
+5. Open the TransPk development build on your Android device and connect.
 
 ## Environment Variables
 

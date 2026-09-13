@@ -1,4 +1,4 @@
-// SafarZuban — Design System (Icy Glass + Indigo)
+// TransPk — Design System (Icy Glass + Indigo)
 export const theme = {
   colors: {
     bg: '#eef0fb',

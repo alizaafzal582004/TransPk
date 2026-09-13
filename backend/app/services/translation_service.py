@@ -1,4 +1,4 @@
-# SafarZuban — Translation Service
+# TransPk — Translation Service
 from app.services.groq_client import client, CHAT_MODEL
 
 def translate_text(text: str, source_language: str, target_language: str) -> dict:

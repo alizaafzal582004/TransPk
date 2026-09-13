@@ -1,4 +1,4 @@
-// SafarZuban — Online/Offline detection hook
+// TransPk — Online/Offline detection hook
 import { useState, useEffect } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 

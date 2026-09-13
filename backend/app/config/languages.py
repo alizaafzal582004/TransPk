@@ -1,4 +1,4 @@
-# SafarZuban — Central Language Configuration
+# TransPk — Central Language Configuration
 # Nayi language add karni ho to sirf yahan ek entry add karo
 # Support status real testing se verify kiya gaya hai
 

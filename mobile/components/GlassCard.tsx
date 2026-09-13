@@ -1,4 +1,4 @@
-// SafarZuban — Frosted Glass Card
+// TransPk — Frosted Glass Card
 import { View, StyleSheet, ViewStyle } from 'react-native';
 import { theme } from '../config/theme';
 

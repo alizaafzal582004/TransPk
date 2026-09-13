@@ -5,7 +5,7 @@ import { theme } from '../config/theme';
 
 const STEPS = [
   { icon: 'language' as const, title: 'Choose Your Languages', desc: 'Select the language you speak and the language you want to translate to.' },
-  { icon: 'mic' as const, title: 'Type or Tap the Mic', desc: 'Type text or press the microphone and speak. SafarZuban translates instantly.' },
+  { icon: 'mic' as const, title: 'Type or Tap the Mic', desc: 'Type text or press the microphone and speak. TransPk translates instantly.' },
   { icon: 'people' as const, title: 'Pass the Phone', desc: 'Use Conversation Mode — one side for you, one for the local. Pass and talk.' },
 ];
 

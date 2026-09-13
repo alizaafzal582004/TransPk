@@ -44,7 +44,7 @@ export default function PhrasebookScreen() {
           </View>
           <View>
             <Text style={styles.headerTitle}>Phrasebook</Text>
-            <Text style={styles.headerSub}>SAFARZUBAN · TRAVEL · SPEAK · CONNECT</Text>
+            <Text style={styles.headerSub}>TransPk · TRAVEL · SPEAK · CONNECT</Text>
           </View>
         </View>
       </ImageBackground>

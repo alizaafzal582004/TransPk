@@ -26,7 +26,7 @@ export default function SettingsScreen() {
         <View style={styles.brandIcon}>
           <Ionicons name="language" size={32} color={theme.colors.accent} />
         </View>
-        <Text style={styles.brandName}>SafarZuban</Text>
+        <Text style={styles.brandName}>TransPk</Text>
         <Text style={styles.brandVersion}>Version 1.0.0</Text>
       </View>
 

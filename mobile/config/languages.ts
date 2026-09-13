@@ -1,4 +1,4 @@
-// SafarZuban — Mobile Language Config
+// TransPk — Mobile Language Config
 export interface Language {
   code: string;
   name: string;

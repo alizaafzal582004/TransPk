@@ -1,4 +1,4 @@
-// SafarZuban — Offline Phrasebook
+// TransPk — Offline Phrasebook
 // Pre-translated emergency + tourist phrases (English → Urdu)
 // Internet ke bagair kaam karta hai
 

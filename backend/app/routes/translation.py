@@ -1,4 +1,4 @@
-# SafarZuban — Translation Route (with language validation)
+# TransPk — Translation Route (with language validation)
 from fastapi import APIRouter, HTTPException
 from app.schemas.translation import TranslationRequest, TranslationResponse
 from app.services.translation_service import translate_text

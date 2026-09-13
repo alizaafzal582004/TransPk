@@ -1,4 +1,4 @@
-# SafarZuban Backend — main.py
+# TransPk Backend — main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import datetime
@@ -7,7 +7,7 @@ from app.routes.translation import router as translation_router
 from app.routes.transcription import router as transcription_router
 
 app = FastAPI(
-    title="SafarZuban API",
+    title="TransPk API",
     description="Multilingual Pakistan Translator Backend",
     version="1.0.0"
 )
@@ -25,13 +25,13 @@ app.include_router(transcription_router)
 
 @app.get("/")
 def root():
-    return {"app": "SafarZuban API", "status": "running", "version": "1.0.0"}
+    return {"app": "TransPk API", "status": "running", "version": "1.0.0"}
 
 @app.get("/health")
 def health_check():
     return {
         "status": "healthy",
-        "app": "SafarZuban API",
+        "app": "TransPk API",
         "version": "1.0.0",
         "timestamp": datetime.datetime.now().isoformat()
     }

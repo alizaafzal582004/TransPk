@@ -1,4 +1,4 @@
-# SafarZuban — Transcription Service
+# TransPk — Transcription Service
 # Groq Whisper se audio → text
 import os
 from app.services.groq_client import client, WHISPER_MODEL
