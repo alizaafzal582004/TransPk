@@ -8,8 +8,8 @@ import TextTranslationScreen from './screens/TextTranslationScreen';
 import ConversationScreen from './screens/ConversationScreen';
 import PhrasebookScreen from './screens/PhrasebookScreen';
 import SettingsScreen from './screens/SettingsScreen';
-import PrivacyScreen from './screens/PrivacyScreen';
 import { theme } from './config/theme';
+import PrivacyScreen from './screens/PrivacyScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +30,7 @@ export default function App() {
           <Stack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Conversation" component={ConversationScreen} options={{ title: 'Conversation' }} />
+       
           <Stack.Screen name="TextTranslation" component={TextTranslationScreen} options={{ title: 'Text Translation' }} />
           <Stack.Screen name="Phrasebook" component={PhrasebookScreen} options={{ title: 'Phrasebook' }} />
           <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />

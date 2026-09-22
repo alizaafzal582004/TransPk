@@ -1,6 +1,5 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import * as Application from 'expo-application';
+import { ScrollView, Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { theme } from '../config/theme';
 import { LANGUAGES } from '../config/languages';
 
@@ -28,7 +27,7 @@ export default function SettingsScreen({ navigation }: any) {
           <Ionicons name="language" size={32} color={theme.colors.accent} />
         </View>
         <Text style={styles.brandName}>TransPk</Text>
-        <Text style={styles.brandVersion}>Version {Application.nativeApplicationVersion || '1.0.0'}</Text>
+        <Text style={styles.brandVersion}>Version 1.0.0</Text>
       </View>
 
       {/* About */}
@@ -62,6 +61,20 @@ export default function SettingsScreen({ navigation }: any) {
         <Text style={styles.tipText}>4. No internet? Open the Offline Phrasebook.</Text>
       </View>
 
+      {/* Legal */}
+      <Text style={styles.sectionTitle}>LEGAL</Text>
+      <View style={[styles.card, theme.shadow.soft]}>
+        <TouchableOpacity style={styles.row} onPress={() => navigation.navigate('Privacy')}>
+          <View style={styles.rowLeft}>
+            <View style={styles.rowIcon}>
+              <Ionicons name="document-text" size={20} color={theme.colors.accent} />
+            </View>
+            <Text style={styles.rowLabel}>Privacy Policy</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={theme.colors.textLight} />
+        </TouchableOpacity>
+      </View>
+
       {/* Note */}
       <View style={styles.noteCard}>
         <Ionicons name="information-circle" size={18} color={theme.colors.warning} />
@@ -69,12 +82,6 @@ export default function SettingsScreen({ navigation }: any) {
           Some languages have limited voice support. Warnings appear when quality may vary.
         </Text>
       </View>
-
-      <TouchableOpacity style={styles.privacyButton} onPress={() => navigation.navigate('Privacy')} activeOpacity={0.8}>
-        <Ionicons name="shield-checkmark-outline" size={20} color={theme.colors.accent} />
-        <Text style={styles.privacyButtonText}>Privacy Policy</Text>
-        <Ionicons name="chevron-forward" size={18} color={theme.colors.textLight} />
-      </TouchableOpacity>
 
       <Text style={styles.footer}>Made for travellers in Pakistan</Text>
     </ScrollView>
@@ -104,7 +111,5 @@ const styles = StyleSheet.create({
   tipText: { fontSize: 14, color: theme.colors.textMed, paddingVertical: 8, lineHeight: 20 },
   noteCard: { flexDirection: 'row', gap: 10, backgroundColor: theme.colors.warningBg, borderRadius: theme.radius.md, padding: 14, marginBottom: theme.spacing.lg },
   noteText: { flex: 1, fontSize: 13, color: theme.colors.warning, lineHeight: 19 },
-  privacyButton: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderRadius: theme.radius.md, padding: 16, marginBottom: theme.spacing.lg, borderWidth: 1, borderColor: theme.colors.glassBorder },
-  privacyButtonText: { flex: 1, color: theme.colors.primary, fontSize: 15, fontWeight: '700' },
   footer: { textAlign: 'center', color: theme.colors.textLight, fontSize: 12, letterSpacing: 0.3 },
 });
