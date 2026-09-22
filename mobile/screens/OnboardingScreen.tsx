@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { theme } from '../config/theme';
 
 const STEPS = [
   { icon: 'language' as const, title: 'Choose Your Languages', desc: 'Select the language you speak and the language you want to translate to.' },
   { icon: 'mic' as const, title: 'Type or Tap the Mic', desc: 'Type text or press the microphone and speak. TransPk translates instantly.' },
   { icon: 'people' as const, title: 'Pass the Phone', desc: 'Use Conversation Mode — one side for you, one for the local. Pass and talk.' },
+  { icon: 'shield-checkmark' as const, title: 'Your Privacy', desc: 'Online text and voice are sent securely to our AI provider only to create your translation. The offline phrasebook sends nothing.' },
 ];
 
 export default function OnboardingScreen({ navigation }: any) {

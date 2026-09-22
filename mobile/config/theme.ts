@@ -16,6 +16,7 @@ export const theme = {
     textDark: '#1a1a3c',
     textMed: '#5a6a8a',
     textLight: '#9aa5c0',
+    silver: '#d7dced',
 
     success: '#2e9e6b',
     successBg: 'rgba(46, 158, 107, 0.12)',

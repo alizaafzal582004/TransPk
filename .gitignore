@@ -54,3 +54,9 @@ desktop.ini
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*dir
+# Credentials — KABHI COMMIT MAT KARNA
+mobile/credentials.json
+mobile/credentials/
+mobile/*.jks
+mobile/*.bak.jks
+mobile/@*.jks

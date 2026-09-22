@@ -1,17 +1,18 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { theme } from '../config/theme';
 
 const MENU = [
   { label: 'Conversation Mode', sub: 'Two people, pass the phone', route: 'Conversation', icon: 'people' as const },
   { label: 'Text Translation', sub: 'Type or speak to translate', route: 'TextTranslation', icon: 'chatbubble-ellipses' as const },
   { label: 'Offline Phrasebook', sub: 'Common phrases, offline', route: 'Phrasebook', icon: 'book' as const },
+  { label: 'Settings & Privacy', sub: 'About, permissions and privacy', route: 'Settings', icon: 'settings-outline' as const },
 ];
 
 export default function HomeScreen({ navigation }: any) {
   return (
     <ImageBackground
-      source={require('../assets/bg-pakistan.png')}
+      source={require('../assets/bg-pakistan.jpg')}
       style={styles.bg}
       imageStyle={styles.bgImage}
       resizeMode="cover"
@@ -63,7 +64,11 @@ const styles = StyleSheet.create({
   bg: { flex: 1, backgroundColor: theme.colors.bg },
   bgImage: { opacity: 0.5 },
   overlay: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     backgroundColor: 'rgba(238, 240, 251, 0.55)',
   },
   container: { flex: 1 },

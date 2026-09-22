@@ -6,12 +6,22 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#eef0fb"
-    },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "assets/**/*"
+    ],
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "cover",
+          "backgroundColor": "#eef0fb"
+        }
+      ],
+      "expo-audio",
+      "expo-font",
+      "expo-asset"
+    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -29,6 +39,11 @@
       "permissions": [
         "RECORD_AUDIO"
       ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "729714f6-9fa5-4e9d-ac2d-d23a5b8efc88"
+      }
     }
   }
 }
