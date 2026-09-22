@@ -7,7 +7,11 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "assetBundlePatterns": [
+<<<<<<< HEAD
       "**/*"
+=======
+      "assets/**/*"
+>>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
     ],
     "plugins": [
       [
@@ -17,7 +21,14 @@
           "resizeMode": "cover",
           "backgroundColor": "#eef0fb"
         }
+<<<<<<< HEAD
       ]
+=======
+      ],
+      "expo-audio",
+      "expo-font",
+      "expo-asset"
+>>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
     ],
     "ios": {
       "supportsTablet": true,

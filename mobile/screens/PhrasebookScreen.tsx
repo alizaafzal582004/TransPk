@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, TextInput, ImageBackground } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Speech from 'expo-speech';
 import { PHRASEBOOK } from '../config/phrasebook';
 import { theme } from '../config/theme';
@@ -32,7 +32,7 @@ export default function PhrasebookScreen() {
     <View style={styles.container}>
       {/* Header strip with full-width image background */}
       <ImageBackground
-        source={require('../assets/phrasebook-header.png')}
+        source={require('../assets/phrasebook-header.jpg')}
         style={styles.headerBg}
         imageStyle={styles.headerImg}
         resizeMode="cover"
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   headerImg: { opacity: 0.9 },
-  headerOverlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(238, 240, 251, 0.3)' },
+  headerOverlay: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, backgroundColor: 'rgba(238, 240, 251, 0.3)' },
   header: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 20 },
   headerIcon: {
     width: 46, height: 46, borderRadius: theme.radius.sm,

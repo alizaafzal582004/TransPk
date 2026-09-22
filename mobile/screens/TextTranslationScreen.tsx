@@ -4,17 +4,18 @@ import {
   View, Text, TextInput, TouchableOpacity,
   StyleSheet, ScrollView, ActivityIndicator, Alert, Image
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAudioRecorder, AudioModule, RecordingPresets } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Speech from 'expo-speech';
 import { LANGUAGES, Language } from '../config/languages';
 import { translateText, transcribeAudioBase64 } from '../services/api';
+import { confirmVoiceDataProcessing } from '../services/privacy';
 import LanguagePicker from '../components/LanguagePicker';
 import { theme } from '../config/theme';
 
-const MAX_CHARS = 5000;
+const MAX_CHARS = 2000;
 
 export default function TextTranslationScreen() {
   const isOnline = useConnectivity();
@@ -63,6 +64,7 @@ export default function TextTranslationScreen() {
     if (!isOnline) { Alert.alert('No Internet', 'Voice translation needs internet. Try the Offline Phrasebook.'); return; }
     if (!sourceLang.stt_supported) { Alert.alert('Not Supported', `Voice input not available for ${sourceLang.name}. ${sourceLang.warning || ''}`); return; }
     try {
+      if (!(await confirmVoiceDataProcessing())) return;
       const status = await AudioModule.requestRecordingPermissionsAsync();
       if (!status.granted) { Alert.alert('Permission Denied', 'Microphone permission required.'); return; }
       await AudioModule.setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
@@ -74,18 +76,22 @@ export default function TextTranslationScreen() {
   const stopRecording = async () => {
     setIsRecording(false); setLoading(true);
     const isV2V = voiceToVoiceMode;
+    let audioUri: string | null = null;
     try {
       await audioRecorder.stop();
-      const uri = audioRecorder.uri;
-      if (!uri) throw new Error('No audio recorded. Try again.');
-      const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+      audioUri = audioRecorder.uri;
+      if (!audioUri) throw new Error('No audio recorded. Try again.');
+      const base64 = await FileSystem.readAsStringAsync(audioUri, { encoding: FileSystem.EncodingType.Base64 });
       const result = await transcribeAudioBase64(base64, sourceLang.code);
       const transcribed = result.transcribed_text;
       if (!transcribed || !transcribed.trim()) { Alert.alert('No Speech', 'Could not detect speech. Please try again.'); setLoading(false); return; }
       setInputText(transcribed);
       await translate(transcribed, isV2V);
     } catch (error: any) { Alert.alert('Error', error.message || 'Voice processing failed.'); }
-    finally { setLoading(false); setVoiceToVoiceMode(false); }
+    finally {
+      if (audioUri) await FileSystem.deleteAsync(audioUri, { idempotent: true }).catch(() => undefined);
+      setLoading(false); setVoiceToVoiceMode(false);
+    }
   };
   const speakTranslation = () => {
     if (!translatedText) return;
@@ -98,10 +104,9 @@ export default function TextTranslationScreen() {
     <View style={styles.root}>
       {/* Bottom skyline background (fixed at bottom, behind content) */}
       <Image
-        source={require('../assets/bottom-skyline.png')}
+        source={require('../assets/bottom-skyline.jpg')}
         style={styles.skyline}
         resizeMode="cover"
-        pointerEvents="none"
       />
 
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
@@ -145,6 +150,8 @@ export default function TextTranslationScreen() {
             <Text style={styles.warningText}>{warning}</Text>
           </View>
         ) : null}
+
+        <Text style={styles.processingNotice}>Text is sent securely to our AI provider only to produce your translation.</Text>
 
         {/* Input with counter */}
         <View style={[styles.inputBox, theme.shadow.soft]}>
@@ -262,6 +269,7 @@ const styles = StyleSheet.create({
   swapBtn: { backgroundColor: theme.colors.accent, borderRadius: 26, width: 52, height: 52, alignItems: 'center', justifyContent: 'center' },
   warningBox: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: theme.colors.warningBg, borderRadius: theme.radius.sm, padding: 12, marginBottom: 14 },
   warningText: { color: theme.colors.warning, fontSize: 13, flex: 1 },
+  processingNotice: { color: theme.colors.textLight, fontSize: 12, lineHeight: 17, marginBottom: 12, textAlign: 'center' },
   inputBox: { backgroundColor: '#fff', borderRadius: theme.radius.md, padding: 16, marginBottom: 14, borderWidth: 1, borderColor: theme.colors.glassBorder },
   boxLabel: { fontSize: 10, color: theme.colors.textLight, marginBottom: 8, letterSpacing: 1, fontWeight: '700' },
   textInput: { fontSize: 16, color: theme.colors.primary, minHeight: 90, textAlignVertical: 'top' },

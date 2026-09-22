@@ -1,17 +1,23 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator, Alert, ImageBackground } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useAudioRecorder, AudioModule, RecordingPresets } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Speech from 'expo-speech';
 import { LANGUAGES, Language } from '../config/languages';
 import { translateText, transcribeAudioBase64 } from '../services/api';
+import { confirmVoiceDataProcessing } from '../services/privacy';
+import { useConnectivity } from '../services/useConnectivity';
 import { theme } from '../config/theme';
 
 const TOURIST_CODES = ['en', 'zh', 'ar', 'fr', 'de'];
 const LOCAL_CODES = ['ur', 'pa', 'ps', 'sd', 'skr'];
 
 export default function ConversationScreen() {
+<<<<<<< HEAD
+=======
+  const isOnline = useConnectivity();
+>>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
   // side A = top (flipped), side B = bottom
   const [topLang, setTopLang] = useState<Language>(LANGUAGES.find(l => l.code === 'en')!);
   const [bottomLang, setBottomLang] = useState<Language>(LANGUAGES.find(l => l.code === 'ur')!);
@@ -43,8 +49,13 @@ export default function ConversationScreen() {
 
   const startRecording = async (side: 'top' | 'bottom') => {
     const srcLang = side === 'top' ? topLang : bottomLang;
+<<<<<<< HEAD
+=======
+    if (!isOnline) { Alert.alert('No Internet', 'Conversation translation needs an internet connection.'); return; }
+>>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
     if (!srcLang.stt_supported) { Alert.alert('Not Supported', `Voice input not available for ${srcLang.name}.`); return; }
     try {
+      if (!(await confirmVoiceDataProcessing())) return;
       const status = await AudioModule.requestRecordingPermissionsAsync();
       if (!status.granted) { Alert.alert('Permission Denied', 'Microphone permission required.'); return; }
       await AudioModule.setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
@@ -58,11 +69,15 @@ export default function ConversationScreen() {
     setRecordingSide(null); setLoadingSide(side);
     const srcLang = side === 'top' ? topLang : bottomLang;
     const tgtLang = side === 'top' ? bottomLang : topLang;
+<<<<<<< HEAD
+=======
+    let audioUri: string | null = null;
+>>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
     try {
       await audioRecorder.stop();
-      const uri = audioRecorder.uri;
-      if (!uri) throw new Error('No audio recorded.');
-      const base64 = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+      audioUri = audioRecorder.uri;
+      if (!audioUri) throw new Error('No audio recorded.');
+      const base64 = await FileSystem.readAsStringAsync(audioUri, { encoding: FileSystem.EncodingType.Base64 });
       const sttResult = await transcribeAudioBase64(base64, srcLang.code);
       const transcribed = sttResult.transcribed_text;
       if (!transcribed || !transcribed.trim()) { Alert.alert('No Speech', 'Could not detect speech. Try again.'); setLoadingSide(null); return; }
@@ -72,7 +87,10 @@ export default function ConversationScreen() {
       if (side === 'top') setBottomText(translated); else setTopText(translated);
       speak(translated, tgtLang);
     } catch (error: any) { Alert.alert('Error', error.message || 'Processing failed.'); }
-    finally { setLoadingSide(null); }
+    finally {
+      if (audioUri) await FileSystem.deleteAsync(audioUri, { idempotent: true }).catch(() => undefined);
+      setLoadingSide(null);
+    }
   };
 
   const FlagRow = ({ codes, activeLang, onSelect }: { codes: string[]; activeLang: Language; onSelect: (l: Language) => void }) => (
@@ -116,7 +134,11 @@ export default function ConversationScreen() {
   return (
     <View style={styles.container}>
       {/* TOP (flipped) */}
+<<<<<<< HEAD
       <ImageBackground source={require('../assets/tourist-bg.png')} style={[styles.side, styles.touristSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
+=======
+      <ImageBackground source={require('../assets/tourist-bg.jpg')} style={[styles.side, styles.touristSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
+>>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
         <View style={styles.flipped}>
           <View style={styles.sideHeader}>
             <View style={styles.flagCircle}><Text style={styles.flagBig}>{topLang.flag}</Text></View>
@@ -146,7 +168,11 @@ export default function ConversationScreen() {
       </View>
 
       {/* BOTTOM */}
+<<<<<<< HEAD
       <ImageBackground source={require('../assets/local-bg.png')} style={[styles.side, styles.localSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
+=======
+      <ImageBackground source={require('../assets/local-bg.jpg')} style={[styles.side, styles.localSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
+>>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
         <View style={styles.sideHeader}>
           <View style={styles.flagCircle}><Text style={styles.flagBig}>{bottomLang.flag}</Text></View>
           <View>

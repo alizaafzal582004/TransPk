@@ -1,10 +1,12 @@
 # TransPk — Translation Route (with language validation)
+import logging
 from fastapi import APIRouter, HTTPException
 from app.schemas.translation import TranslationRequest, TranslationResponse
 from app.services.translation_service import translate_text
 from app.config.languages import get_language, get_support_status, get_warning
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 @router.post("/translate", response_model=TranslationResponse)
 def translate(request: TranslationRequest):
@@ -50,8 +52,9 @@ def translate(request: TranslationRequest):
 
         return result
 
-    except Exception as e:
+    except Exception:
+        logger.exception("Text translation failed")
         raise HTTPException(
-            status_code=500,
-            detail="Translation failed. Please try again."
+            status_code=502,
+            detail="Translation service is temporarily unavailable. Please try again."
         )
