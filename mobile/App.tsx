@@ -8,10 +8,7 @@ import TextTranslationScreen from './screens/TextTranslationScreen';
 import ConversationScreen from './screens/ConversationScreen';
 import PhrasebookScreen from './screens/PhrasebookScreen';
 import SettingsScreen from './screens/SettingsScreen';
-<<<<<<< HEAD
-=======
 import PrivacyScreen from './screens/PrivacyScreen';
->>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
 import { theme } from './config/theme';
 
 const Stack = createNativeStackNavigator();
@@ -36,10 +33,7 @@ export default function App() {
           <Stack.Screen name="TextTranslation" component={TextTranslationScreen} options={{ title: 'Text Translation' }} />
           <Stack.Screen name="Phrasebook" component={PhrasebookScreen} options={{ title: 'Phrasebook' }} />
           <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
-<<<<<<< HEAD
-=======
           <Stack.Screen name="Privacy" component={PrivacyScreen} options={{ title: 'Privacy Policy' }} />
->>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

@@ -14,10 +14,7 @@ const TOURIST_CODES = ['en', 'zh', 'ar', 'fr', 'de'];
 const LOCAL_CODES = ['ur', 'pa', 'ps', 'sd', 'skr'];
 
 export default function ConversationScreen() {
-<<<<<<< HEAD
-=======
   const isOnline = useConnectivity();
->>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
   // side A = top (flipped), side B = bottom
   const [topLang, setTopLang] = useState<Language>(LANGUAGES.find(l => l.code === 'en')!);
   const [bottomLang, setBottomLang] = useState<Language>(LANGUAGES.find(l => l.code === 'ur')!);
@@ -49,10 +46,7 @@ export default function ConversationScreen() {
 
   const startRecording = async (side: 'top' | 'bottom') => {
     const srcLang = side === 'top' ? topLang : bottomLang;
-<<<<<<< HEAD
-=======
     if (!isOnline) { Alert.alert('No Internet', 'Conversation translation needs an internet connection.'); return; }
->>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
     if (!srcLang.stt_supported) { Alert.alert('Not Supported', `Voice input not available for ${srcLang.name}.`); return; }
     try {
       if (!(await confirmVoiceDataProcessing())) return;
@@ -69,10 +63,7 @@ export default function ConversationScreen() {
     setRecordingSide(null); setLoadingSide(side);
     const srcLang = side === 'top' ? topLang : bottomLang;
     const tgtLang = side === 'top' ? bottomLang : topLang;
-<<<<<<< HEAD
-=======
     let audioUri: string | null = null;
->>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
     try {
       await audioRecorder.stop();
       audioUri = audioRecorder.uri;
@@ -134,11 +125,7 @@ export default function ConversationScreen() {
   return (
     <View style={styles.container}>
       {/* TOP (flipped) */}
-<<<<<<< HEAD
-      <ImageBackground source={require('../assets/tourist-bg.png')} style={[styles.side, styles.touristSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
-=======
       <ImageBackground source={require('../assets/tourist-bg.jpg')} style={[styles.side, styles.touristSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
->>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
         <View style={styles.flipped}>
           <View style={styles.sideHeader}>
             <View style={styles.flagCircle}><Text style={styles.flagBig}>{topLang.flag}</Text></View>
@@ -168,11 +155,7 @@ export default function ConversationScreen() {
       </View>
 
       {/* BOTTOM */}
-<<<<<<< HEAD
-      <ImageBackground source={require('../assets/local-bg.png')} style={[styles.side, styles.localSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
-=======
       <ImageBackground source={require('../assets/local-bg.jpg')} style={[styles.side, styles.localSide]} imageStyle={styles.sideBgImg} resizeMode="cover">
->>>>>>> a63c00d87d0b2202b8469e2efd846526db1e5863
         <View style={styles.sideHeader}>
           <View style={styles.flagCircle}><Text style={styles.flagBig}>{bottomLang.flag}</Text></View>
           <View>
